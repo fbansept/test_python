@@ -10,6 +10,7 @@ class Hero :
         self.largeur = 50
         self.hauteur = 50
         self.couleur = (255 , 0 , 0)
+        self.rectHero = pygame.Rect(self.x, self.y, self.largeur, self.hauteur)
 
 
     def deplacement(self, obstacle) :
@@ -31,17 +32,33 @@ class Hero :
             (self.x, self.y, self.largeur, self.hauteur))
         
     def deplacement_bas(self, obstacle) :
-        if self.y < Config.screen_height - self.hauteur:
+
+        rectHero = pygame.Rect(self.x , self.y + 10, self.largeur, self.hauteur)
+        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+
+        if not rectHero.colliderect(rectObstacle) and self.y < Config.screen_height - self.hauteur:
             self.y += 10
 
     def deplacement_haut(self, obstacle) :
-        if self.y > 0:
+
+        rectHero = pygame.Rect(self.x , self.y - 10, self.largeur, self.hauteur)
+        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+
+        if not rectHero.colliderect(rectObstacle) and self.y > 0:
             self.y -= 10
 
     def deplacement_droite(self, obstacle) :
-        if self.x < Config.screen_width - self.largeur:
+
+        rectHero = pygame.Rect(self.x + 10, self.y, self.largeur, self.hauteur)
+        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+
+        if not rectHero.colliderect(rectObstacle) and self.x < Config.screen_width - self.largeur:
             self.x += 10
 
     def deplacement_gauche(self, obstacle) :
-        if self.x > 0:
+
+        rectHero = pygame.Rect(self.x - 10, self.y, self.largeur, self.hauteur)
+        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+        
+        if not rectHero.colliderect(rectObstacle) and self.x > 0:
             self.x -= 10
