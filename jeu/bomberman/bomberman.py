@@ -21,7 +21,17 @@ clock = pygame.time.Clock()
   # créer un objet hero <--------------
 
 hero = Hero()
-obstacle = Obstacle()
+
+
+liste_obstacles = (
+    Obstacle(100,100),
+    Obstacle(150,100),
+    Obstacle(200,100),
+    Obstacle(250,100),
+    Obstacle(0,300),
+    Obstacle(50,300),
+    Obstacle(100,300),
+)
 
 while en_cours:
     for event in pygame.event.get():
@@ -34,9 +44,10 @@ while en_cours:
 
     #dessiner le hero <--------------
     hero.dessiner(screen)
-    hero.deplacement(obstacle)
+    hero.deplacement(liste_obstacles)
     
-    obstacle.dessiner(screen)
+    for obstacle in liste_obstacles :
+      obstacle.dessiner(screen)
 
     # Rafraîchir l'affichage
     pygame.display.flip()

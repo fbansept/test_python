@@ -13,17 +13,17 @@ class Hero :
         self.rectHero = pygame.Rect(self.x, self.y, self.largeur, self.hauteur)
 
 
-    def deplacement(self, obstacle) :
+    def deplacement(self, liste_obstacles) :
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_RIGHT]:
-            self.deplacement_droite(obstacle)
+            self.deplacement_droite(liste_obstacles)
         if keys[pygame.K_LEFT]:
-            self.deplacement_gauche(obstacle)
+            self.deplacement_gauche(liste_obstacles)
         if keys[pygame.K_UP]:
-            self.deplacement_haut(obstacle)
+            self.deplacement_haut(liste_obstacles)
         if keys[pygame.K_DOWN]:
-            self.deplacement_bas(obstacle)
+            self.deplacement_bas(liste_obstacles)
 
     
     def dessiner(self, screen) :   
@@ -31,30 +31,62 @@ class Hero :
             self.couleur , 
             (self.x, self.y, self.largeur, self.hauteur))
         
-    def deplacement_bas(self, obstacle) :
+    def deplacement_bas(self, liste_obstacles) :
 
         prevision_hitbox_hero = pygame.Rect(self.x , self.y + 10, self.largeur, self.hauteur)
 
-        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.y < Config.screen_height - self.hauteur:
+        #on test si une collision se produirait dans le cas d'un déplacement vers le bas
+        prevision_collision = False
+
+        for obstacle in liste_obstacles :
+            if prevision_hitbox_hero.colliderect(obstacle.hitbox):
+                prevision_collision = True
+                break
+
+        if not prevision_collision and self.y < Config.screen_height - self.hauteur:
             self.y += 10
 
-    def deplacement_haut(self, obstacle) :
+    def deplacement_haut(self, liste_obstacles) :
 
         prevision_hitbox_hero = pygame.Rect(self.x , self.y - 10, self.largeur, self.hauteur)
 
-        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.y > 0:
+        #on test si une collision se produirait dans le cas d'un déplacement vers le bas
+        prevision_collision = False
+
+        for obstacle in liste_obstacles :
+            if prevision_hitbox_hero.colliderect(obstacle.hitbox):
+                prevision_collision = True
+                break
+
+        if not prevision_collision and self.y > 0:
             self.y -= 10
 
-    def deplacement_droite(self, obstacle) :
+    def deplacement_droite(self, liste_obstacles) :
 
         prevision_hitbox_hero = pygame.Rect(self.x + 10, self.y, self.largeur, self.hauteur)
 
-        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.x < Config.screen_width - self.largeur:
+        #on test si une collision se produirait dans le cas d'un déplacement vers le bas
+        prevision_collision = False
+
+        for obstacle in liste_obstacles :
+            if prevision_hitbox_hero.colliderect(obstacle.hitbox):
+                prevision_collision = True
+                break
+
+        if not prevision_collision and self.x < Config.screen_width - self.largeur:
             self.x += 10
 
-    def deplacement_gauche(self, obstacle) :
+    def deplacement_gauche(self, liste_obstacles) :
 
         prevision_hitbox_hero = pygame.Rect(self.x - 10, self.y, self.largeur, self.hauteur)
         
-        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.x > 0:
+        #on test si une collision se produirait dans le cas d'un déplacement vers le bas
+        prevision_collision = False
+
+        for obstacle in liste_obstacles :
+            if prevision_hitbox_hero.colliderect(obstacle.hitbox):
+                prevision_collision = True
+                break
+
+        if not prevision_collision and self.x > 0:
             self.x -= 10
