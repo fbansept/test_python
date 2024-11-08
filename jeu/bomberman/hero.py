@@ -50,7 +50,7 @@ class Hero :
 
         prevision_hitbox_hero = pygame.Rect(self.x , self.y - 10, self.largeur, self.hauteur)
 
-        #on test si une collision se produirait dans le cas d'un déplacement vers le bas
+        #on test si une collision se produirait dans le cas d'un déplacement vers le haut
         prevision_collision = False
 
         for obstacle in liste_obstacles :
@@ -65,7 +65,7 @@ class Hero :
 
         prevision_hitbox_hero = pygame.Rect(self.x + 10, self.y, self.largeur, self.hauteur)
 
-        #on test si une collision se produirait dans le cas d'un déplacement vers le bas
+        #on test si une collision se produirait dans le cas d'un déplacement vers la droite
         prevision_collision = False
 
         for obstacle in liste_obstacles :
@@ -80,7 +80,7 @@ class Hero :
 
         prevision_hitbox_hero = pygame.Rect(self.x - 10, self.y, self.largeur, self.hauteur)
         
-        #on test si une collision se produirait dans le cas d'un déplacement vers le bas
+        #on test si une collision se produirait dans le cas d'un déplacement vers la gauche
         prevision_collision = False
 
         for obstacle in liste_obstacles :
