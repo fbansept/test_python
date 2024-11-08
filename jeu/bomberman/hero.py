@@ -35,10 +35,13 @@ class Hero :
             self.y += 10
 
     def deplacement_haut(self) :
-        self.y -= 10
+        if self.y > 0:
+            self.y -= 10
 
     def deplacement_droite(self) :
-        self.x += 10
+        if self.x < Config.screen_width - self.largeur:
+            self.x += 10
 
     def deplacement_gauche(self) :
-        self.x -= 10
+        if self.x > 0:
+            self.x -= 10
