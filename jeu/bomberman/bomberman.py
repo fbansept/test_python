@@ -34,7 +34,7 @@ while en_cours:
 
     #dessiner le hero <--------------
     hero.dessiner(screen)
-    hero.deplacement()
+    hero.deplacement(obstacle)
     
     obstacle.dessiner(screen)
 
