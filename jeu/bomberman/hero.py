@@ -33,32 +33,28 @@ class Hero :
         
     def deplacement_bas(self, obstacle) :
 
-        rectHero = pygame.Rect(self.x , self.y + 10, self.largeur, self.hauteur)
-        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+        prevision_hitbox_hero = pygame.Rect(self.x , self.y + 10, self.largeur, self.hauteur)
 
-        if not rectHero.colliderect(rectObstacle) and self.y < Config.screen_height - self.hauteur:
+        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.y < Config.screen_height - self.hauteur:
             self.y += 10
 
     def deplacement_haut(self, obstacle) :
 
-        rectHero = pygame.Rect(self.x , self.y - 10, self.largeur, self.hauteur)
-        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+        prevision_hitbox_hero = pygame.Rect(self.x , self.y - 10, self.largeur, self.hauteur)
 
-        if not rectHero.colliderect(rectObstacle) and self.y > 0:
+        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.y > 0:
             self.y -= 10
 
     def deplacement_droite(self, obstacle) :
 
-        rectHero = pygame.Rect(self.x + 10, self.y, self.largeur, self.hauteur)
-        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+        prevision_hitbox_hero = pygame.Rect(self.x + 10, self.y, self.largeur, self.hauteur)
 
-        if not rectHero.colliderect(rectObstacle) and self.x < Config.screen_width - self.largeur:
+        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.x < Config.screen_width - self.largeur:
             self.x += 10
 
     def deplacement_gauche(self, obstacle) :
 
-        rectHero = pygame.Rect(self.x - 10, self.y, self.largeur, self.hauteur)
-        rectObstacle = pygame.Rect(obstacle.x, obstacle.y, obstacle.largeur, obstacle.hauteur)
+        prevision_hitbox_hero = pygame.Rect(self.x - 10, self.y, self.largeur, self.hauteur)
         
-        if not rectHero.colliderect(rectObstacle) and self.x > 0:
+        if not prevision_hitbox_hero.colliderect(obstacle.hitbox) and self.x > 0:
             self.x -= 10
