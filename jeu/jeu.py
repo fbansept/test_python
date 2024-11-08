@@ -26,7 +26,7 @@ class Jeu :
         liste_balle = []
 
         for index in range(100) :
-            liste_balle.append(Balle())
+            liste_balle.append(Balle(self))
 
 
         while en_cours:
@@ -40,7 +40,7 @@ class Jeu :
 
             for balle in liste_balle :
                 balle.dessiner(screen)
-                balle.deplacement(self.screen_width, self.screen_height)
+                balle.deplacement(self)
             
 
             # Rafraîchir l'affichage
