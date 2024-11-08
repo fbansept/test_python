@@ -2,6 +2,7 @@ import pygame
 import sys
 from config import Config
 from hero import Hero
+from obstacle import Obstacle
 
 # Initialiser pygame
 pygame.init()
@@ -20,6 +21,7 @@ clock = pygame.time.Clock()
   # créer un objet hero <--------------
 
 hero = Hero()
+obstacle = Obstacle()
 
 while en_cours:
     for event in pygame.event.get():
@@ -33,6 +35,8 @@ while en_cours:
     #dessiner le hero <--------------
     hero.dessiner(screen)
     hero.deplacement()
+    
+    obstacle.dessiner(screen)
 
     # Rafraîchir l'affichage
     pygame.display.flip()
